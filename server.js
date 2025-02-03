@@ -1,4 +1,7 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const connectToMongodb = require("./db/database");
+dotenv.config();
 const app = express();
 const port = 3000;
 
@@ -9,5 +12,6 @@ app.get("/ping", (req, res) => {
 
 // Start the server
 app.listen(port, () => {
+  connectToMongodb();
   console.log(`Server is running at http://localhost:${port}`);
 });
